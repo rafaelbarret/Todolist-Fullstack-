@@ -1,0 +1,87 @@
+/* src/styles/App.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+button {
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: var(--button-hover-background-color);
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+:root {
+  --background-color: #f0f0f0;
+  --text-color: #000000;
+  --button-background-color: #007bff;
+  --button-text-color: #fff;
+  --button-hover-background-color: #0056b3;
+  --header-footer-background-color: #007bff;
+  --header-footer-text-color: #fff;
+}
+
+body.dark {
+  --background-color: #333;
+  --text-color: #000000;
+  --button-background-color: #555;
+  --button-text-color: #fff;
+  --button-hover-background-color: #777;
+  --header-footer-background-color: #555;
+  --header-footer-text-color: #fff;
+}
+
+/* Adicionando estilos para Header e Footer */
+.header, .footer {
+  background-color: var(--header-footer-background-color);
+  color: var(--header-footer-text-color);
+}
+
+.header-buttons button, .footer p {
+  color: var(--header-footer-text-color);
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
+
+  button {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+
+
+

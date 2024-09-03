@@ -3,10 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
 import api from '../services/api';
 import Task from '../components/Task';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import '../styles/TaskList.css'; // Importando o arquivo CSS
 
 const TaskList = () => {
   const { auth, logout } = useContext(AuthContext);
   const [tasks, setTasks] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -52,31 +56,54 @@ const TaskList = () => {
     navigate('/login');
   };
 
+  const filteredTasks = tasks.filter(task =>
+    task.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    task.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   if (!auth) {
     return <p>Você precisa estar logado para ver as tarefas.</p>;
   }
 
   return (
-    <div>
-      <button onClick={() => navigate('/tasks/new')}>Adicionar Nova Tarefa</button>
-      <button onClick={handleLogout}>Logout</button>
-      {tasks.length > 0 ? (
-        tasks.map(task => (
-          <Task
-            key={task.id}
-            task={task}
-            onEdit={handleEdit}
-            onDelete={handleDelete}
-            onToggleComplete={handleToggleComplete}
-          />
-        ))
-      ) : (
-        <p>Não há tarefas para exibir.</p>
-      )}
+    <div className="task-list-container">
+      <Header onLogout={handleLogout} showAddTaskButton={true} />
+      <input
+        type="text"
+        className="search-input"
+        placeholder="Pesquisar tarefas..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+      <div className="task-list">
+        {filteredTasks.length > 0 ? (
+          filteredTasks.map(task => (
+            <div className="task-item" key={task.id}>
+              <Task
+                task={task}
+                onEdit={handleEdit}
+                onDelete={handleDelete}
+                onToggleComplete={handleToggleComplete}
+              />
+            </div>
+          ))
+        ) : (
+          <p>Não há tarefas para exibir.</p>
+        )}
+      </div>
+      <Footer />
     </div>
   );
 };
 
 export default TaskList;
+
+
+
+
+
+
+
+
 
 

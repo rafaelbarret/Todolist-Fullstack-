@@ -1,0 +1,39 @@
+/* src/styles/Home.css */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px; /* Espaço extra para o header fixo */
+    padding-bottom: 60px; /* Espaço extra para o footer fixo */
+  }
+  
+  .home-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .home-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+  
+  .home-content p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+  
+  .home-content button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1em;
+  }
+  
+  .home-content button:hover {
+    background-color: #0056b3;
+  }
+  

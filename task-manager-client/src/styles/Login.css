@@ -1,0 +1,16 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 80px; /* Espaço extra para o header fixo */
+  padding-bottom: 60px; /* Espaço extra para o footer fixo */
+}
+
+.login-form {
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-button {
+  margin-top: 10px;
+}

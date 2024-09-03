@@ -1,0 +1,35 @@
+/* src/styles/Task.css */
+.task {
+    background-color: var(--task-background-color, #fff);
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .task.completed {
+    background-color: #d4edda; /* Cor de fundo para tarefa concluída */
+    color: #155724; /* Cor do texto para tarefa concluída */
+    text-decoration: line-through; /* Texto riscado */
+  }
+  
+  .task h3, .task p {
+    color: inherit; /* Herdar a cor do texto */
+  }
+  
+  .task button {
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .task button:hover {
+    background-color: var(--button-hover-background-color);
+  }
+  

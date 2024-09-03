@@ -1,0 +1,47 @@
+/* src/styles/TaskList.css */
+.task-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 80px; /* Espaço extra para o header fixo */
+  padding-bottom: 60px; /* Espaço extra para o footer fixo */
+}
+
+.task-list {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.task-item {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: calc(50% - 20px); /* Ajuste para duas colunas */
+  box-sizing: border-box;
+}
+
+.task-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.search-input {
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 400px;
+}
+
+@media (max-width: 600px) {
+  .task-item {
+    width: 100%; /* Ajuste para uma coluna em telas menores */
+  }
+}
+
+  
+  
+  
