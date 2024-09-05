@@ -1,8 +1,10 @@
+require('dotenv').config(); // Carrega as variáveis de ambiente do arquivo .env
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('localhost', 'root', 'Banco@98457147', {
-    host: '127.0.0.1',
+// Configura a conexão com o banco de dados usando Sequelize
+const sequelize = new Sequelize('localhost', process.env.DB_USER, process.env.DB_PASS, {
+    host: process.env.DB_HOST,
     dialect: 'mysql'
 });
 
-module.exports = sequelize;
+module.exports = sequelize;// Exporta a instância do Sequelize para ser usada em outros arquivos

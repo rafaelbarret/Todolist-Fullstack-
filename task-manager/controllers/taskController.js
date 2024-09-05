@@ -1,5 +1,6 @@
 const Task = require('../models/Task');
 
+// Função para obter todas as tarefas de um usuário
 exports.getTasks = async (req, res) => {
     try {
         const tasks = await Task.findAll({ where: { userId: req.userId } });
@@ -9,6 +10,7 @@ exports.getTasks = async (req, res) => {
     }
 };
 
+// Função para criar uma nova tarefa
 exports.createTask = async (req, res) => {
     const { title, description } = req.body;
     try {
@@ -19,6 +21,7 @@ exports.createTask = async (req, res) => {
     }
 };
 
+// Função para atualizar uma tarefa existente
 exports.updateTask = async (req, res) => {
     const { id } = req.params;
     const { title, description, completed } = req.body;
@@ -37,6 +40,7 @@ exports.updateTask = async (req, res) => {
     }
 };
 
+// Função para deletar uma tarefa
 exports.deleteTask = async (req, res) => {
     const { id } = req.params;
     try {

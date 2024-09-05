@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
+// Define o modelo Task com seus campos e tipos de dados
 const Task = sequelize.define('Task', {
     title: {
         type: DataTypes.STRING,
@@ -20,5 +21,5 @@ const Task = sequelize.define('Task', {
     }
 });
 
-module.exports = Task;
+module.exports = Task; // Exporta o modelo Task
 

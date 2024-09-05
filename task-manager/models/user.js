@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
+// Define o modelo User com seus campos e tipos de dados
 const User = sequelize.define('User', {
     email: {
         type: DataTypes.STRING,
@@ -13,4 +14,5 @@ const User = sequelize.define('User', {
     }
 });
 
-module.exports = User;
+module.exports = User; // Exporta o modelo User
+
