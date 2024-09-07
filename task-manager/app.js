@@ -1,28 +1,29 @@
-require('dotenv').config(); // Carrega as variáveis de ambiente do arquivo .env
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors'); 
+const cors = require('cors');
 const sequelize = require('./config/database');
 const userRoutes = require('./routes/userRoutes');
 const taskRoutes = require('./routes/taskRoutes');
 
 const app = express();
 
-app.use(cors()); // Habilita CORS para permitir requisições de diferentes origens
-app.use(bodyParser.json()); // Configura o body-parser para parsear JSON
+app.use(cors());
+app.use(bodyParser.json());
 
-app.use('/api/users', userRoutes); // Define as rotas de usuários
-app.use('/api/tasks', taskRoutes); // Define as rotas de tarefas
+app.use('/api/users', userRoutes);
+app.use('/api/tasks', taskRoutes);
 
-// Sincroniza o Sequelize com o banco de dados
 sequelize.sync()
     .then(() => {
-        console.log('Database connected'); // Mensagem de sucesso na conexão com o banco de dados
+        console.log('Database connected');
     })
     .catch(err => {
-        console.log('Error connecting to the database', err); // Mensagem de erro na conexão com o banco de dados
+        console.log('Error connecting to the database', err);
     });
 
-module.exports = app; // Exporta a instância do Express para ser usada em outros arquivos
+module.exports = app;
+
+
 
 

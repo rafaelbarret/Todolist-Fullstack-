@@ -1,25 +1,28 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
+const User = require('./user');
 
-// Define o modelo Task com seus campos e tipos de dados
 const Task = sequelize.define('Task', {
     title: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
     },
     description: {
         type: DataTypes.STRING,
-        allowNull: false
-    },
-    completed: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false
+        allowNull: false,
     },
     userId: {
         type: DataTypes.INTEGER,
-        allowNull: false
-    }
+        allowNull: false,
+        references: {
+            model: User,
+            key: 'id',
+        },
+    },
 });
 
-module.exports = Task; // Exporta o modelo Task
+Task.belongsTo(User, { foreignKey: 'userId' });
+
+module.exports = Task;
+
 

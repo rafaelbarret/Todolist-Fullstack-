@@ -1,18 +1,27 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
+const { body, validationResult } = require('express-validator');
 
 // Função para registrar um novo usuário
-exports.register = async (req, res) => {
-    const { email, password } = req.body;
-    try {
-        const hashedPassword = await bcrypt.hash(password, 10); // Hash da senha do usuário
-        const user = await User.create({ email, password: hashedPassword });
-        res.status(201).json({ message: 'User created successfully', user });
-    } catch (error) {
-        res.status(500).json({ message: 'Error creating user', error });
+exports.register = [
+    body('email').isEmail(),
+    body('password').isLength({ min: 6 }),
+    async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+        const { email, password } = req.body;
+        try {
+            const hashedPassword = await bcrypt.hash(password, 10); // Hash da senha do usuário
+            const user = await User.create({ email, password: hashedPassword });
+            res.status(201).json({ message: 'User created successfully', user });
+        } catch (error) {
+            res.status(500).json({ message: 'Error creating user', error });
+        }
     }
-};
+];
 
 // Função para login de usuário
 exports.login = async (req, res) => {
@@ -32,3 +41,5 @@ exports.login = async (req, res) => {
         res.status(500).json({ message: 'Error logging in', error });
     }
 };
+
+

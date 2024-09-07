@@ -1,10 +1,11 @@
-require('dotenv').config(); // Carrega as variáveis de ambiente do arquivo .env
+require('dotenv').config();
 const jwt = require('jsonwebtoken');
 
 // Middleware de autenticação
 const authMiddleware = (req, res, next) => {
   const token = req.headers.authorization?.split(' ')[1]; // Obtém o token do cabeçalho de autorização
   if (!token) {
+    console.log('Access denied: No token provided');
     return res.status(401).json({ message: 'Access denied' });
   }
   try {
@@ -12,10 +13,13 @@ const authMiddleware = (req, res, next) => {
     req.userId = decoded.userId; // Adiciona o userId ao objeto req
     next();
   } catch (error) {
+    console.error('Invalid token:', error);
     res.status(401).json({ message: 'Invalid token' });
   }
 };
 
-module.exports = authMiddleware; // Exporta o middleware para ser usado em outras rotas
+module.exports = authMiddleware;
+
+
 
 
