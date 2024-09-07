@@ -14,6 +14,12 @@ exports.register = [
         }
         const { email, password } = req.body;
         try {
+            // Verifique se o email já está registrado
+            const existingUser = await User.findOne({ where: { email } });
+            if (existingUser) {
+                return res.status(400).json({ message: 'Email already registered' });
+            }
+
             const hashedPassword = await bcrypt.hash(password, 10); // Hash da senha do usuário
             const user = await User.create({ email, password: hashedPassword });
             res.status(201).json({ message: 'User created successfully', user });

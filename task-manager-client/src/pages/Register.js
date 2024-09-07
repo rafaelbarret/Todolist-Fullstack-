@@ -19,9 +19,13 @@ const Register = () => {
       localStorage.setItem('token', response.data.token);
       setAuth(true);
       navigate('/tasks');
-    } catch (error) {
+    } catch (error)  {
       console.error('Erro ao registrar', error.response ? error.response.data : error.message);
-      alert('Erro ao registrar. Tente novamente.');
+      if (error.response && error.response.data.message === 'Email already registered') {
+        alert('Este email já está registrado. Por favor, use outro email.');
+      } else {
+        alert('Erro ao registrar. Tente novamente.');
+      }
     }
   };
 

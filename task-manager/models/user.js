@@ -1,18 +1,17 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
-// Define o modelo User com seus campos e tipos de dados
 const User = sequelize.define('User', {
     email: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true
+        unique: true, // Adiciona a restrição de unicidade
     },
     password: {
         type: DataTypes.STRING,
-        allowNull: false
-    }
+        allowNull: false,
+    },
 });
 
-module.exports = User; // Exporta o modelo User
+module.exports = User;
 
