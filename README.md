@@ -27,10 +27,10 @@ Instale as dependências:
 npm install
 
 Crie um arquivo .env na raiz do projeto e adicione as seguintes variáveis de ambiente:
-DB_HOST=127.0.0.1
-DB_USER=root
-DB_PASS=Banco@98457147
-JWT_SECRET=your_jwt_secret
+DB_HOST= **
+DB_USER= **
+DB_PASS= **
+JWT_SECRET= **
 
 Inicie o servidor:
 npm start
